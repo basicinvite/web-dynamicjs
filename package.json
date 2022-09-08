@@ -1,0 +1,20 @@
+{
+  "name": "web-dynamicjs",
+  "version": "1.0.0",
+  "description": "Applet to load inline and external javascript dynamically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "prettier ./src/** && tsc",
+    "build:dev": "prettier ./src/** && tsc --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "jest": "^29.0.2",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.8",
+    "typescript": "^4.8.3"
+  }
+}
