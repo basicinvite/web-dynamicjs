@@ -6,29 +6,31 @@ export default class DynamicScript implements DynamicScriptInterface {
 
   public settings: JSLoaderSettingsInterface;
   public isInline: boolean;
+  private valid: boolean;
 
 
   constructor(settings: JSLoaderSettingsInterface) {
 
     //Construct object with optional src and attributes. 
     this.settings = settings;
+    this.valid = true;
 
     //If src, then the script is not inline.
-    this.settings?.src ? this.isInline = false : this.isInline = true;
+    this.settings.inlineCode ? this.isInline = true : this.isInline = false;
   }
 
   /**
    * Returns code string
    */
   get code(): string {
-    return this.settings?.inlineCode ? this.settings?.inlineCode : '';
+    return this.settings.inlineCode ? this.settings.inlineCode : '';
   }
 
   /**
    * Returns the attributes array to be used on the script element
    */
   get attributesArray(): Array<DynamicScriptAttributesInterface> | undefined {
-    return this.settings?.attributes;
+    return this.settings.attributes;
   }
 
   /**
@@ -38,35 +40,54 @@ export default class DynamicScript implements DynamicScriptInterface {
     return this.settings.src ? this.settings.src : '';
   }
 
-  get html(): HTMLScriptElement {
 
-    //Create a new script element
-    let html = document.createElement("script");
-
-    //Always set attribute for type
-    html.setAttribute("type", "text/javascript");
-
-    //Check to see if a src is inline
-    if (this.isInline) {
-
-      //Get inline code, create new text node and append to the script element
-      const codeNode = document.createTextNode(this.code);
-      html.append(codeNode);
-
-    } else {
-      //If not inline, just set the src
-      html.setAttribute("src", this.srcString);
+  private _checkIfValid() {
+    if (this.code && this.srcString) {
+      this.valid = false;
     }
 
-    //Append any attributes passed in settings to script
-    this.attributesArray?.forEach(attr => {
-      if (attr.name) {
-        html.setAttribute(attr.name, attr.value);
+    if (!this.code && !this.srcString) {
+      this.valid = false;
+    }
+
+    return this.valid;
+  }
+
+  get html(): HTMLScriptElement | string {
+
+    let result;
+
+    if (this._checkIfValid()) {
+      //Create a new script element
+      let html = document.createElement("script");
+
+      //Always set attribute for type
+      html.setAttribute("type", "text/javascript");
+
+      //Check to see if a src is inline
+      if (this.isInline) {
+
+        //Get inline code, create new text node and append to the script element
+        const codeNode = document.createTextNode(this.code);
+        html.append(codeNode);
+
+      } else {
+        //If not inline, just set the src
+        html.setAttribute("src", this.srcString);
       }
-    });
 
-    return html;
+      //Append any attributes passed in settings to script
+      this.attributesArray?.forEach(attr => {
+        if (attr.name) {
+          html.setAttribute(attr.name, attr.value);
+        }
+      });
+      result = html;
+    } else {
+      result = '';
+    }
 
+    return result;
   }
 
 
