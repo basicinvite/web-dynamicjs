@@ -1,4 +1,4 @@
-export interface DynamicScriptAttributesInterface {
+export interface ScriptAttributesInterface {
   name: string,
   value: string
 }

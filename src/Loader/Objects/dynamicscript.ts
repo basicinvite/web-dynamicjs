@@ -1,15 +1,15 @@
-import { DynamicScriptAttributesInterface } from "../Interfaces/Objects/dynamicscript.attribute.interface";
+import { ScriptAttributesInterface } from "../Interfaces/Objects/dynamicscript.attribute.interface";
 import { DynamicScriptInterface } from "../Interfaces/Objects/dynamicscript.interface";
-import { JSLoaderSettingsInterface } from "../Interfaces/Settings/settings.interface";
+import { ScriptSettingsInterface } from "../Interfaces/Settings/settings.interface";
 
 export default class DynamicScript implements DynamicScriptInterface {
 
-  public settings: JSLoaderSettingsInterface;
+  public settings: ScriptSettingsInterface;
   public isInline: boolean;
   private valid: boolean;
 
 
-  constructor(settings: JSLoaderSettingsInterface) {
+  constructor(settings: ScriptSettingsInterface) {
 
     //Construct object with optional src and attributes. 
     this.settings = settings;
@@ -29,7 +29,7 @@ export default class DynamicScript implements DynamicScriptInterface {
   /**
    * Returns the attributes array to be used on the script element
    */
-  get attributesArray(): Array<DynamicScriptAttributesInterface> | undefined {
+  get attributesArray(): Array<ScriptAttributesInterface> | undefined {
     return this.settings.attributes;
   }
 

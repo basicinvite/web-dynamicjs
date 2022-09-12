@@ -1,7 +1,7 @@
-import { JSLoaderSettingsInterface } from "./Settings/settings.interface";
+import { ScriptSettingsInterface } from "./Settings/settings.interface";
 
 export interface JSLoaderInterface {
 
-  loadNewDynamicScript(parentSelector: string, settings: JSLoaderSettingsInterface): void
+  loadNewDynamicScript(parentSelector: string, settings: ScriptSettingsInterface): void
 
 }

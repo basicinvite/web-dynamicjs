@@ -1,7 +1,7 @@
-import { DynamicScriptAttributesInterface } from "../Objects/dynamicscript.attribute.interface";
+import { ScriptAttributesInterface } from "../Objects/dynamicscript.attribute.interface";
 
-export interface JSLoaderSettingsInterface {
+export interface ScriptSettingsInterface {
   src?: string,
   inlineCode?: string,
-  attributes?: Array<DynamicScriptAttributesInterface>,
+  attributes?: Array<ScriptAttributesInterface>,
 }
