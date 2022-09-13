@@ -2,7 +2,7 @@ import { JSLoaderInterface } from "./Interfaces/jsloader.interface";
 import { ScriptSettingsInterface } from "./Interfaces/Settings/settings.interface";
 import DynamicScript from "./Objects/dynamicscript";
 
-export class JSLoader implements JSLoaderInterface {
+export default class JSLoader implements JSLoaderInterface {
 
   constructor() { }
 

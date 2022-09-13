@@ -3,7 +3,7 @@
  */
 
 import { ScriptSettingsInterface } from '../Loader/Interfaces/Settings/settings.interface';
-import { JSLoader } from '../Loader/jsloader';
+import JSLoader from '../Loader/jsloader';
 test('Dynamic Script returns correct values.', () => {
   const Loader = new JSLoader();
   const settings: ScriptSettingsInterface = {

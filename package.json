@@ -2,7 +2,7 @@
   "name": "web-dynamicjs",
   "version": "1.0.0",
   "description": "Applet to load inline and external javascript dynamically.",
-  "main": "index.js",
+  "types": "typings/web-dynamicjs.d.ts",
   "scripts": {
     "build": "prettier ./src/** && tsc",
     "build:dev": "prettier ./src/** && tsc --watch",

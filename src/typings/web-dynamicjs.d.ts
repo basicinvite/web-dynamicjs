@@ -1,9 +1,15 @@
-import { JSLoader } from "../Loader/jsloader";
 import { ScriptSettingsInterface } from "../Loader/Interfaces/Settings/settings.interface";
+import JSLoader from "../Loader/jsloader";
 
-export default JSLoader;
 
-export {
-  JSLoader,
-  ScriptSettingsInterface
-}
+const DynamicScriptSettings: ScriptSettingsInterface;
+const DynamicScriptLoader = JSLoader;
+
+
+declare module 'web-dynamicjs' {
+  export default DynamicScriptLoader;
+  export {
+    DynamicScriptLoader,
+    DynamicScriptSettings
+  }
+};
