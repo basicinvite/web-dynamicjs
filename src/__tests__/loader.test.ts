@@ -3,9 +3,9 @@
  */
 
 import { ScriptSettingsInterface } from '../Loader/Interfaces/Settings/settings.interface';
-import JSLoader from '../Loader/jsloader';
+import DynamicJSLoader from '../Loader/jsloader';
 test('Dynamic Script returns correct values.', () => {
-  const Loader = new JSLoader();
+  const Loader = new DynamicJSLoader();
   const settings: ScriptSettingsInterface = {
     src: 'https://basicinvite.com'
   }
@@ -17,7 +17,7 @@ test('Dynamic Script returns correct values.', () => {
 });
 
 test('Dynamic Script returns correct values if parent selector not found.', () => {
-  const Loader = new JSLoader();
+  const Loader = new DynamicJSLoader();
   const settings: ScriptSettingsInterface = {
     src: 'https://basicinvite.com'
   }

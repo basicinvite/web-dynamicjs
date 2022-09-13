@@ -2,13 +2,14 @@
   "name": "web-dynamicjs",
   "version": "1.0.0",
   "description": "Applet to load inline and external javascript dynamically.",
-  "types": "typings/web-dynamicjs.d.ts",
+  "main": "./dist/Loader/jsloader.js",
+  "types": "./dist/Loader/jsloader.d.ts",
   "scripts": {
     "build": "prettier ./src/** && tsc",
     "build:dev": "prettier ./src/** && tsc --watch",
     "test": "jest --collect-coverage"
   },
-  "author": "",
+  "author": "Basic Invite",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.0.0",
