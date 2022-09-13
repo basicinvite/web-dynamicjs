@@ -1,0 +1,23 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - "main"
+      - "dev"
+  workflow_dispatch:
+    environment:
+      description: "Environment to run tests against."
+      type: environment
+      required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 12,14,16
+      - run: npm ci
+      - run: npm run test
