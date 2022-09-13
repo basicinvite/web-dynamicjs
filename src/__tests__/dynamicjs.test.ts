@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { JSLoaderSettingsInterface } from '../Loader/Interfaces/Settings/settings.interface';
+import { ScriptSettingsInterface } from '../Loader/Interfaces/Settings/settings.interface';
 import DynamicScript from '../Loader/Objects/dynamicscript';
 
 //Test if settings are null.
@@ -24,7 +24,7 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
   });
 
   test('When src is set and code is set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       src: "https://basicinvite.com",
       inlineCode: "var x = 0;"
     };
@@ -34,7 +34,7 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
   });
 
   test('When src is set and code is set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       src: "https://basicinvite.com",
       inlineCode: "var x = 0;"
     };
@@ -45,7 +45,7 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
   });
 
   test('When src is set and code is set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       src: "https://basicinvite.com",
       inlineCode: "var x = 0;",
       attributes: [{ name: 'test', value: "test" }]
@@ -62,7 +62,7 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
 //Test getter and setter methods.
 describe("Test getter and setter methods for DynamicScript class", () => {
   test('When src is set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       src: 'https://www.google.com/recaptcha/api.js?render',
     }
     const script = new DynamicScript(settings);
@@ -72,7 +72,7 @@ describe("Test getter and setter methods for DynamicScript class", () => {
   });
 
   test('When src is set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       src: 'https://www.google.com/recaptcha/api.js?render',
       attributes: [{ name: 'test', value: "test" }]
     }
@@ -88,7 +88,7 @@ describe("Test getter and setter methods for DynamicScript class", () => {
 //Test to make sure that an external script with and without attributes set returns correct html.
 describe("Test that when loading dynamic script, script with a source and attributes loads correct html", () => {
   test('When src is set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       src: 'https://www.google.com/recaptcha/api.js?render'
     }
     const script = new DynamicScript(settings);
@@ -100,7 +100,7 @@ describe("Test that when loading dynamic script, script with a source and attrib
   });
 
   test('When src is set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       src: 'https://www.google.com/recaptcha/api.js?render',
       attributes: [{ name: 'defer', value: 'defer' }]
     }
@@ -118,7 +118,7 @@ describe("Test that when loading dynamic script, script with a source and attrib
 //Test to make sure that an inline script with and without attributes set returns correct html.
 describe("Test that when loading dynamic script, script with a source and attributes loads correct html", () => {
   test('When src is not set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       inlineCode: "var x = 0;"
     }
     const script = new DynamicScript(settings);
@@ -131,7 +131,7 @@ describe("Test that when loading dynamic script, script with a source and attrib
   });
 
   test('When src is not set and has attributes, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {
+    const settings: ScriptSettingsInterface = {
       inlineCode: "var x = 0;",
       attributes: [{ name: 'defer', value: 'defer' }]
     }
@@ -150,7 +150,7 @@ describe("Test that when loading dynamic script, script with a source and attrib
 //Test to make sure that a dynamic script being loaded without a source or inline code returns correct html.
 describe("Test that when loading dynamic script, script with a source and attributes loads correct html", () => {
   test('When src is not set, correct html is returned', () => {
-    const settings: JSLoaderSettingsInterface = {}
+    const settings: ScriptSettingsInterface = {}
     const script = new DynamicScript(settings);
     const element = '';
     expect(script.html).toStrictEqual(element);

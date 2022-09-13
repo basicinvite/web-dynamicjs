@@ -2,12 +2,11 @@
  * @jest-environment jsdom
  */
 
-import { visitFunctionBody } from 'typescript';
-import { JSLoaderSettingsInterface } from '../Loader/Interfaces/Settings/settings.interface';
+import { ScriptSettingsInterface } from '../Loader/Interfaces/Settings/settings.interface';
 import { JSLoader } from '../Loader/jsloader';
 test('Dynamic Script returns correct values.', () => {
   const Loader = new JSLoader();
-  const settings: JSLoaderSettingsInterface = {
+  const settings: ScriptSettingsInterface = {
     src: 'https://basicinvite.com'
   }
   Loader.loadNewDynamicScript('body', settings);
@@ -19,7 +18,7 @@ test('Dynamic Script returns correct values.', () => {
 
 test('Dynamic Script returns correct values if parent selector not found.', () => {
   const Loader = new JSLoader();
-  const settings: JSLoaderSettingsInterface = {
+  const settings: ScriptSettingsInterface = {
     src: 'https://basicinvite.com'
   }
   Loader.loadNewDynamicScript('bobby', settings);
