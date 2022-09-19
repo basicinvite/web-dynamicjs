@@ -9,6 +9,10 @@ export default class DynamicScript implements DynamicScriptInterface {
   private valid: boolean;
 
 
+  /**
+   * 
+   * @param settings 
+   */
   constructor(settings: ScriptSettingsInterface) {
 
     //Construct object with optional src and attributes. 
@@ -41,7 +45,11 @@ export default class DynamicScript implements DynamicScriptInterface {
   }
 
 
-  private _checkIfValid() {
+  /**
+   * 
+   * @returns Boolean
+   */
+  private _checkIfValid(): Boolean {
     if (this.code && this.srcString) {
       this.valid = false;
     }
@@ -53,10 +61,13 @@ export default class DynamicScript implements DynamicScriptInterface {
     return this.valid;
   }
 
-  get html(): HTMLScriptElement | string {
+  /**
+   * Using settings, create an HTMLScriptElement.
+   * If script created, return element, otherwise return null.
+   */
+  get html(): HTMLScriptElement | null {
 
     let result;
-
     if (this._checkIfValid()) {
       //Create a new script element
       let html = document.createElement("script");
@@ -82,13 +93,12 @@ export default class DynamicScript implements DynamicScriptInterface {
           html.setAttribute(attr.name, attr.value);
         }
       });
+
       result = html;
-    } else {
-      result = '';
+
     }
-
-    return result;
+    //Return the html element if there is html, otherwise return null
+    return result ? result : null;
   }
-
 
 }

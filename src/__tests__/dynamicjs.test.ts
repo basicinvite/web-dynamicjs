@@ -11,11 +11,11 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
     const settings = {};
     const script = new DynamicScript(settings);
 
-    expect(script.html).toBe("");
+    expect(script.html).toBeNull();
     expect(script.isInline).toBeFalsy();
   });
 
-  test('When src is set, correct html is returned', () => {
+  test('When src is set, correct code is returned', () => {
     const settings = {};
     const script = new DynamicScript(settings);
 
@@ -23,17 +23,16 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
     expect(script.isInline).toBeFalsy();
   });
 
-  test('When src is set and code is set, correct html is returned', () => {
+  test('When src is set and code is set, then no dynamic script html should be returned because it is not valid', () => {
     const settings: ScriptSettingsInterface = {
       src: "https://basicinvite.com",
       inlineCode: "var x = 0;"
     };
     const script = new DynamicScript(settings);
-
-    expect(script.html).toBe("");
+    expect(script.html).toBeNull();
   });
 
-  test('When src is set and code is set, correct html is returned', () => {
+  test('When src is set and code is set, code is returned, but no dynamic script html should be returned because it is not valid', () => {
     const settings: ScriptSettingsInterface = {
       src: "https://basicinvite.com",
       inlineCode: "var x = 0;"
@@ -41,10 +40,10 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
     const script = new DynamicScript(settings);
 
     expect(script.code).toBe("var x = 0;");
-    expect(script.html).toBe("");
+    expect(script.html).toBeNull();
   });
 
-  test('When src is set and code is set, correct html is returned', () => {
+  test('When src is set and code is set, code is returned, attributes array is populated, but no then no dynamic script html should be returned because it is not valid', () => {
     const settings: ScriptSettingsInterface = {
       src: "https://basicinvite.com",
       inlineCode: "var x = 0;",
@@ -54,14 +53,14 @@ describe("Test DynamicScript Class returns expected html if settings are null", 
 
     expect(script.code).toBe("var x = 0;");
     expect(script.attributesArray).toHaveLength(1);
-    expect(script.html).toBe("");
+    expect(script.html).toBeNull();
   });
 
 });
 
 //Test getter and setter methods.
 describe("Test getter and setter methods for DynamicScript class", () => {
-  test('When src is set, correct html is returned', () => {
+  test('When src is set, code should be empty string and isInline should be false', () => {
     const settings: ScriptSettingsInterface = {
       src: 'https://www.google.com/recaptcha/api.js?render',
     }
@@ -71,7 +70,7 @@ describe("Test getter and setter methods for DynamicScript class", () => {
     expect(script.isInline).toBeFalsy();
   });
 
-  test('When src is set, correct html is returned', () => {
+  test('When src is set and attributes provided, script has a populated attributes array', () => {
     const settings: ScriptSettingsInterface = {
       src: 'https://www.google.com/recaptcha/api.js?render',
       attributes: [{ name: 'test', value: "test" }]
@@ -99,7 +98,7 @@ describe("Test that when loading dynamic script, script with a source and attrib
     expect(script.isInline).toBeFalsy();
   });
 
-  test('When src is set, correct html is returned', () => {
+  test('When src is set and attributes are passed, correct html is returned', () => {
     const settings: ScriptSettingsInterface = {
       src: 'https://www.google.com/recaptcha/api.js?render',
       attributes: [{ name: 'defer', value: 'defer' }]
@@ -152,8 +151,7 @@ describe("Test that when loading dynamic script, script with a source and attrib
   test('When src is not set, correct html is returned', () => {
     const settings: ScriptSettingsInterface = {}
     const script = new DynamicScript(settings);
-    const element = '';
-    expect(script.html).toStrictEqual(element);
+    expect(script.html).toBeNull();
   });
 
 });
