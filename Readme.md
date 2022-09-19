@@ -7,12 +7,12 @@ DynamicJSLoader is a tool used to load js dynamically on the page. Supports both
 To install DynamicJSLoader
 
 ```bash
-npm install https://github.com/basicinvite/web-dynamicjs.git#<version number>
+npm install git+https://github.com/basicinvite/web-dynamicjs.git#<version number>
 
 
 EXAMPLE:
 
-npm install https://github.com/basicinvite/web-dynamicjs.git#1.0.0
+npm install git+https://github.com/basicinvite/web-dynamicjs.git#1.0.0
 ```
 
 ## Usage
