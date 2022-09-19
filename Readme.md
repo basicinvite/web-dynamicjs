@@ -7,16 +7,21 @@ DynamicJSLoader is a tool used to load js dynamically on the page. Supports both
 To install DynamicJSLoader
 
 ```bash
-npm install _____
+npm install https://github.com/basicinvite/web-dynamicjs.git#<version number>
+
+
+EXAMPLE:
+
+npm install https://github.com/basicinvite/web-dynamicjs.git#1.0.0
 ```
 
 ## Usage
 
 ```typescript
-import {WebDynamicJSLoader} from 'web-dynamicjsloader';
+import JSLoader from 'web-dynamicjs';
 
 
-const loader = new WebDynamicJSLoader.Loader();
+const loader = new JSLoader.Loader();
 
 //If creating inline script, specify inlineCode property instead of src. 
 
@@ -26,8 +31,23 @@ const settings: WebDynamicJSLoader.Settings = {
   attributes: [{name: 'async', value: 'async'}]
 }
 
-//Call this and specify the parent for where js is to be loaded.
-loader.loadNewDynamicScript('body', settings);
+//You can load a script dynamically two ways...
+
+//Option 1:
+/************************/
+
+//Create a new DynamicScript 
+const script = new DynamicScript(settings);
+
+//Call the loadNewDynamicScript method to actually load the new script element - callback is optional
+loader.loadNewDynamicScript(script, 'body', callback);
+
+//Option 2:
+/************************/
+
+//Just call createAndLoadDynamicScript if you don't need more control over the script.
+
+loader.createAndLoadDynamicScript(settings, 'body', callback);
 
 ```
 
