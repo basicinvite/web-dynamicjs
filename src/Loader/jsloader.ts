@@ -11,10 +11,10 @@ export default class DynamicJSLoader implements JSLoaderInterface {
    * @param callback 
    * @returns
    */
-  private _onDynamicScriptLoad(callback?: () => any) {
+  private async _onDynamicScriptLoad(callback?: () => any) {
     //Call callback if one is provided.
     if (callback) {
-      callback();
+      await callback();
     }
   }
 
@@ -30,8 +30,8 @@ export default class DynamicJSLoader implements JSLoaderInterface {
     return new Promise((resolve) => {
       const scriptElement = script?.html;
       if (scriptElement) {
-        scriptElement.addEventListener('load', () => {
-          this._onDynamicScriptLoad(callback);
+        scriptElement.addEventListener('load', async () => {
+          await this._onDynamicScriptLoad(callback);
           resolve(true);
         }, false);
         const element = document.querySelector(parentSelector);
