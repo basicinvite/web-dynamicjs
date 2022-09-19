@@ -3,5 +3,5 @@ export interface DynamicScriptInterface {
     settings: ScriptSettingsInterface;
     code: string;
     srcString: string;
-    html: HTMLScriptElement | string;
+    html: HTMLScriptElement | null;
 }

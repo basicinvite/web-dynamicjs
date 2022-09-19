@@ -1,6 +1,33 @@
 import { JSLoaderInterface } from "./Interfaces/jsloader.interface";
 import { ScriptSettingsInterface } from "./Interfaces/Settings/settings.interface";
-export default class JSLoader implements JSLoaderInterface {
+import DynamicScript from "./Objects/dynamicscript";
+export default class DynamicJSLoader implements JSLoaderInterface {
     constructor();
-    loadNewDynamicScript(parentSelector: string, settings: ScriptSettingsInterface): void;
+    /**
+     *
+     * @param callback
+     * @returns
+     */
+    private _onDynamicScriptLoad;
+    /**
+     *
+     * @param script
+     * @param parentSelector
+     * @param callback
+     * @returns Promise<any>
+     */
+    loadNewDynamicScript(script: DynamicScript, parentSelector: string, callback?: () => any): Promise<any>;
+    /**
+     *
+     * @param settings
+     * @returns DynamicScript
+     */
+    createNewDynamicScript(settings: ScriptSettingsInterface): DynamicScript;
+    /**
+     *
+     * @param settings
+     * @param parentSelector
+     * @param callback
+     */
+    createAndLoadDynamicScript(settings: ScriptSettingsInterface, parentSelector: string, callback?: () => any): Promise<any>;
 }

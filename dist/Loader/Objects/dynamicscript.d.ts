@@ -5,6 +5,10 @@ export default class DynamicScript implements DynamicScriptInterface {
     settings: ScriptSettingsInterface;
     isInline: boolean;
     private valid;
+    /**
+     *
+     * @param settings
+     */
     constructor(settings: ScriptSettingsInterface);
     /**
      * Returns code string
@@ -18,6 +22,14 @@ export default class DynamicScript implements DynamicScriptInterface {
      * Return the src in the settings
      */
     get srcString(): string;
+    /**
+     *
+     * @returns Boolean
+     */
     private _checkIfValid;
-    get html(): HTMLScriptElement | string;
+    /**
+     * Using settings, create an HTMLScriptElement.
+     * If script created, return element, otherwise return null.
+     */
+    get html(): HTMLScriptElement | null;
 }

@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class DynamicScript {
+    /**
+     *
+     * @param settings
+     */
     constructor(settings) {
         //Construct object with optional src and attributes. 
         this.settings = settings;
@@ -26,6 +30,10 @@ class DynamicScript {
     get srcString() {
         return this.settings.src ? this.settings.src : '';
     }
+    /**
+     *
+     * @returns Boolean
+     */
     _checkIfValid() {
         if (this.code && this.srcString) {
             this.valid = false;
@@ -35,6 +43,10 @@ class DynamicScript {
         }
         return this.valid;
     }
+    /**
+     * Using settings, create an HTMLScriptElement.
+     * If script created, return element, otherwise return null.
+     */
     get html() {
         var _a;
         let result;
@@ -61,10 +73,8 @@ class DynamicScript {
             });
             result = html;
         }
-        else {
-            result = '';
-        }
-        return result;
+        //Return the html element if there is html, otherwise return null
+        return result ? result : null;
     }
 }
 exports.default = DynamicScript;

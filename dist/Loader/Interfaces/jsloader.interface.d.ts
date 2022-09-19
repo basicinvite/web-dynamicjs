@@ -1,4 +1,7 @@
+import DynamicScript from "Loader/Objects/dynamicscript";
 import { ScriptSettingsInterface } from "./Settings/settings.interface";
 export interface JSLoaderInterface {
-    loadNewDynamicScript(parentSelector: string, settings: ScriptSettingsInterface): void;
+    loadNewDynamicScript(script: DynamicScript, parentSelector: string, callback?: () => any): Promise<any>;
+    createNewDynamicScript(settings: ScriptSettingsInterface): DynamicScript;
+    createAndLoadDynamicScript(settings: ScriptSettingsInterface, parentSelector: string, callback?: () => any): Promise<any>;
 }
