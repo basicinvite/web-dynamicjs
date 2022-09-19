@@ -56,12 +56,10 @@ export default class DynamicJSLoader implements JSLoaderInterface {
    * @param parentSelector 
    * @param callback 
    */
-  createAndLoadDynamicScript(settings: ScriptSettingsInterface, parentSelector: string, callback?: () => any) {
+  createAndLoadDynamicScript(settings: ScriptSettingsInterface, parentSelector: string, callback?: () => any): Promise<any> {
     //Create and then load a dynamic script
     const script = this.createNewDynamicScript(settings);
-    if (script.html) {
-      this.loadNewDynamicScript(script, parentSelector, callback);
-    }
+    return this.loadNewDynamicScript(script, parentSelector, callback);
   }
 
 }
